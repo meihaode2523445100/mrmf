@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Api(value = "课程", tags = "course")
+@Api(value = "课程", tags = "阿斯弗")
 public class CourserController {
 
     @Autowired
