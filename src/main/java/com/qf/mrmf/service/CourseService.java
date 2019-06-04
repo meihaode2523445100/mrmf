@@ -1,10 +1,8 @@
 package com.qf.mrmf.service;
 
-import com.qf.mrmf.entity.CourseType;
-
-import java.util.List;
+import com.qf.mrmf.vo.R;
 
 public interface CourseService {
 
-    List<CourseType> findAllCourseType();
+    R findAllCourseType();
 }

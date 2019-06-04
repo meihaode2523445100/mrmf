@@ -1,12 +1,10 @@
 package com.qf.mrmf.service.impl;
 
 import com.qf.mrmf.dao.CourseDao;
-import com.qf.mrmf.entity.CourseType;
 import com.qf.mrmf.service.CourseService;
+import com.qf.mrmf.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CourserServiceImpl implements CourseService {
@@ -15,7 +13,7 @@ public class CourserServiceImpl implements CourseService {
     private CourseDao courseDao;
 
     @Override
-    public List<CourseType> findAllCourseType() {
-        return courseDao.findAllType();
+    public R findAllCourseType() {
+        return R.setOK("OK",courseDao.findAllType());
     }
 }
