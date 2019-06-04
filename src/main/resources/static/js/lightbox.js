@@ -164,7 +164,7 @@ Lightbox.prototype = {
 	// initialize()
 	// Constructor runs on completion of the DOM loading. Loops through anchor tags looking for 
 	// 'lightbox' references and applies onclick events to appropriate links. The 2nd section of
-	// the function inserts html at the bottom of the page which is used to display the shadow 
+	// the function inserts mrmf at the bottom of the page which is used to display the shadow
 	// overlay and the image container.
 	//
 	initialize: function() {	
@@ -183,7 +183,7 @@ Lightbox.prototype = {
 			}
 		}
 
-		// The rest of this code inserts html at the bottom of the page that looks similar to this:
+		// The rest of this code inserts mrmf at the bottom of the page that looks similar to this:
 		//
 		//	<div id="overlay"></div>
 		//	<div id="lightbox">
