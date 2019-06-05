@@ -2,6 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.mrmf.dao.CourseDao">
     <select id="findAllType" resultType="com.qf.mrmf.entity.CourseType">
-        select * from tb_course_type;
+        select * from tb_course_type
+    </select>
+
+    <select id="findAllRank" resultType="com.qf.mrmf.entity.CourseRank">
+        select * from tb_course_rank
+    </select>
+
+    <select id="findCourserBySomeCondition" parameterType="map" resultType="com.qf.mrmf.entity.Course">
+        select * from tb_course_info
+        where ctypeid = #{ctypeid} and crankid = #{crankid}
+        limit #{page},#{size};
     </select>
 </mapper>
