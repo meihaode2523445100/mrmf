@@ -1,5 +1,7 @@
 package com.qf.mrmf.dao;
 
+import com.qf.mrmf.entity.Course;
+import com.qf.mrmf.entity.CourseRank;
 import com.qf.mrmf.entity.CourseType;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,4 +13,8 @@ public interface CourseDao {
      * @return
      */
     List<CourseType> findAllType();
+
+    List<CourseRank> findAllRank();
+
+    List<Course> findCourserBySomeCondition(int ctypeid,int crankid,int page,int size);
 }

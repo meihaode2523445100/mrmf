@@ -40,20 +40,15 @@
         <div class="mainnav">
             <ul>
                   <li id="nav1"><span><a href="index.html">首页</a></span></li>
-                  <li id="nav2"><span><a href="school_profile.html">学校概况</a></span>
+                  <li id="nav2"><span><a href="about_school.html">学校概况</a></span>
                        <div class="subnav">
-                           <ul>
-                               <li><a href="school_profile.html">学校简介</a></li>
-                               <li><a href="school_master.html">校长致辞</a></li>
-                               <li><a href="school_envir.html">教学环境</a></li>
-                               <li><a href="school_honor.html">学校荣誉</a></li>
-                               <li><a href="school_news.html">学校快讯</a></li>
-                           </ul>
+
+                           <ul id="sc1"></ul>
                        </div> 
                   </li>
                   <li id="nav3"><span><a href="course.html">课程介绍</a></span>
                        <div class="subnav">
-                           <ul>
+                           <ul >
                                <li><a href="course.html">美容培训</a></li>
                                <li><a href="course.html">美发培训</a></li>
                                <li><a href="course.html">化妆培训</a></li>
@@ -136,12 +131,8 @@
            <div class="Sidebar">
            <div class="menu">
    <h3><img src="../images/Nav_about.png" /></h3>
-   <ul>
-         <li id="menu1"><a href="school_profile.html">学校简介</a></li>
-         <li id="menu2"><a href="school_master.html">校长致辞</a></li>
-         <li id="menu3"><a href="school_envir.html">教学环境</a></li>
-         <li id="menu4"><a href="school_honor.html">学校荣誉</a></li>
-         <li id="menu5"><a href="school_news.html">学校快讯</a></li>
+   <ul id="sc2">
+
    </ul>
 </div>
 
@@ -218,6 +209,28 @@
     <script type="text/javascript" language="javascript">
       jQuery("#nav2").attr("class","onnav");
 	  jQuery("#menu1").attr("class","acur");
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type:"get",
+                url:"../aboutSchool",
+                dataType:"json",
+                success:function(data) {
+                    if (data.code == 1) {
+                        var info = data.data;
+                        $(info).each(function (){
+                            var html = '<li>';
+                            html +=    '<a href="'+this.c_url+'">'+ this.c_name+'</a>';
+                            html +=    '</li>';
+                            $("#sc1,#sc2").append($(html))
+                        })
+
+                    }
+                }
+            })
+        })
     </script>
     
 </body>

@@ -1,15 +1,14 @@
 package com.qf.mrmf.controller;
 
 
-import com.qf.mrmf.entity.AboutSchool;
 import com.qf.mrmf.service.AboutSchoolService;
 import com.qf.mrmf.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(value = "学校概况",tags = "about_school")

@@ -40,11 +40,11 @@
         <div class="mainnav">
             <ul>
                   <li id="nav1"><span><a href="index.html">首页</a></span></li>
-                  <li id="nav2"><span><a href="school_profile.html">学校概况</a></span>
+                  <li id="nav2"><span><a href="about_school.html">学校概况</a></span>
                        <div class="subnav">
                            <ul>
-                               <li><a href="school_profile.html">学校简介</a></li>
-                               <li><a href="school_profile.html">校长致辞</a></li>
+                               <li><a href="about_school.html">学校简介</a></li>
+                               <li><a href="about_school.html">校长致辞</a></li>
                                <li><a href="school_honor.html">教学环境</a></li>
                                <li><a href="school_honor.html">学校荣誉</a></li>
                                <li><a href="school_news.html">学校快讯</a></li>
@@ -53,11 +53,11 @@
                   </li>
                   <li id="nav3"><span><a href="course.html">课程介绍</a></span>
                        <div class="subnav">
-                           <ul>
-                               <li><a href="course.html">美容培训</a></li>
+                           <ul id="titleid">
+                               <!--<li><a href="course.html">美容培训</a></li>
                                <li><a href="course.html">美发培训</a></li>
                                <li><a href="course.html">化妆培训</a></li>
-                               <li><a href="course.html">业余班</a></li>
+                               <li><a href="course.html">业余班</a></li>-->
                            </ul>
                        </div>
                   </li>
@@ -136,11 +136,11 @@
            <div class="Sidebar">
            <div class="menu">
    <h3><img src="../images/Nav_course.png" /></h3>
-   <ul>
-         <li id="menu1"><a href="course.html">美容培训</a></li>
+   <ul id = "courseTypeId">
+         <!--<li id="menu1"><a href="course.html">美容培训</a></li>
          <li id="menu2"><a href="course.html">美发培训</a></li>
          <li id="menu3"><a href="course.html">化妆培训</a></li>
-         <li id="menu4"><a href="course.html">业余班</a></li>
+         <li id="menu4"><a href="course.html">业余班</a></li>-->
    </ul>
 </div>
 
@@ -156,10 +156,10 @@
                       
                       <!--Cont Star-->
                       <div class="Course_tab">
-                         <ul>
-                                <li><a href="javascript:void(0);" id="CourseTab1" onclick="setTab('CourseTab',1,3)" class="acur">初级美容师班</a></li>
+                         <ul id="courseRankId">
+                                <!--<li><a href="javascript:void(0);" id="CourseTab1" onclick="setTab('CourseTab',1,3)" class="acur">初级美容师班</a></li>
                                 <li><a href="javascript:void(0);" id="CourseTab2" onclick="setTab('CourseTab',2,3)">中级美容师班</a></li>
-                                <li><a href="javascript:void(0);" id="CourseTab3" onclick="setTab('CourseTab',3,3)">高级美容师班</a></li>
+                                <li><a href="javascript:void(0);" id="CourseTab3" onclick="setTab('CourseTab',3,3)">高级美容师班</a></li>-->
                          </ul>
                       </div>
                       
@@ -339,7 +339,7 @@
       jQuery("#nav3").attr("class","onnav");
 	  jQuery("#menu1").attr("class","acur");
     </script>
-
+    <!--发送ajax请求查询到课程的种类-->
     <script type="text/javascript">
         $(function () {
             $.ajax({
@@ -348,7 +348,34 @@
                 dataType:"json",
                 success:function (data) {
                     if(data.code == 1) {
-                        alert("nihao");
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html = '<li id="menu1"><a href="course.html">'+this.typename+'</a></li>';
+                            $("#courseTypeId").append($(html));
+                            $("#titleid").append($(html));
+                        })
+
+                    }
+                }
+            })
+        })
+    </script>
+
+    <!--发送ajax请求查询到课程的等级-->
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type:"get",
+                url:"../findCourseRank.do",
+                dataType:"json",
+                success:function (data) {
+                    if(data.code == 1) {
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html = '<li><a href="javascript:void(0);" id="CourseTab2" >'+this.rankname+'</a></li>';
+                            $("#courseRankId").append($(html));
+                        })
+
                     }
                 }
             })
