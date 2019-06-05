@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mrmf.dao.StudentDao">
+    <select id="findStudent" parameterType="map" resultType="com.qf.mrmf.entity.Student">
+        select * from tb_stu_apply
+        where sname=#{sname} and stel=#{stel} and cid=#{cid};
+    </select>
+
+    <insert id="studentApply" parameterType="com.qf.mrmf.entity.Student" >
+        insert into tb_stu_apply values (null,#{sname},#{stel},#{sqq},#{cid},#{schoolid},#{msg},1)
+    </insert>
+</mapper>
