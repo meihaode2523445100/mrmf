@@ -15,7 +15,7 @@ import java.util.Map;
  * @author: Tang_Siyuan
  * @create: 2019-06-04 17:40
  **/
-@Api(value = "作品展示", tags = "作品展示")
+@Api(value = "works_show", tags = "works_show")
 // @Controller
 @RestController
 public class ProductionController {
