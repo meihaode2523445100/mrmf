@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mrmf.dao.JobDao">
+    <select id="showJobMenu" resultType="com.qf.mrmf.entity.Job">
+        select * from tb_job
+    </select>
+    <select id="showJobCStar" resultType="com.qf.mrmf.entity.JobStar">
+        select * from tb_job_star where c_id = 1
+    </select>
+    <select id="showJobJStar" resultType="com.qf.mrmf.entity.JobStar">
+        select * from tb_job_star where c_id = 0
+    </select>
+    <select id="showJobServer" resultType="com.qf.mrmf.entity.JobJServer">
+        select * from tb_job_jserver
+    </select>
+
+
+
+</mapper>

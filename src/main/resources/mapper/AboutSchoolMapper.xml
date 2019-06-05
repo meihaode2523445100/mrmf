@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mrmf.dao.AboutSchoolDao">
+    <select id="showAboutSchoolMenu" resultType="com.qf.mrmf.entity.AboutSchool">
+        select * from tb_about_school
+    </select>
+
+    <select id="showSchoolProfile" resultType="com.qf.mrmf.entity.SchoolProfile">
+        select * from tb_school_profile
+    </select>
+
+    <select id="showSchoolMaster" resultType="com.qf.mrmf.entity.SchoolMaster">
+        select * from tb_school_master
+    </select>
+
+    <select id="showSchoolEnvir" resultType="com.qf.mrmf.entity.SchoolEnvir">
+        select * from tb_school_envir
+    </select>
+    <select id="showSchoolHonor" resultType="com.qf.mrmf.entity.SchoolHonor">
+        select * from tb_school_honor
+    </select>
+    <select id="showSchoolNews" resultType="com.qf.mrmf.entity.SchoolNews">
+        select * from tb_school_news
+    </select>
+
+
+</mapper>
