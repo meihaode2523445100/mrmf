@@ -1,6 +1,6 @@
 package com.qf.mrmf.dao;
 
-import com.qf.mrmf.entity.AboutSchool;
+import com.qf.mrmf.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -9,4 +9,10 @@ import java.util.List;
 public interface AboutSchoolDao {
 
     public List<AboutSchool> showAboutSchoolMenu();
+
+    public List<SchoolProfile> showSchoolProfile();
+    public List<SchoolMaster> showSchoolMaster();
+    public List<SchoolEnvir> showSchoolEnvir();
+    public List<SchoolHonor> showSchoolHonor();
+    public List<SchoolNews> showSchoolNews();
 }

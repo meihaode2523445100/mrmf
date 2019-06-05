@@ -16,4 +16,27 @@ public class AboutSchoolServiceImpl implements AboutSchoolService {
     public R showAboutSchool() {
         return R.setOK("ok", aboutSchoolDao.showAboutSchoolMenu());
     }
+
+    @Override
+    public R showSchoolProfile() {
+        return R.setOK("ok", aboutSchoolDao.showSchoolProfile());
+    }
+
+    @Override
+    public R showSchoolMaster() {
+        return R.setOK("ok", aboutSchoolDao.showSchoolMaster());
+    }
+
+    @Override
+    public R showSchoolEnvir() {
+        return R.setOK("ok", aboutSchoolDao.showSchoolEnvir());
+    }
+    @Override
+    public R showSchoolHonor() {
+        return R.setOK("ok", aboutSchoolDao.showSchoolHonor());
+    }
+    @Override
+    public R showSchoolNews() {
+        return R.setOK("ok", aboutSchoolDao.showSchoolNews());
+    }
 }
