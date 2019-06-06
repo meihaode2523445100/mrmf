@@ -211,26 +211,8 @@
 	  jQuery("#menu1").attr("class","acur");
     </script>
 
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                type:"get",
-                url:"../aboutSchool",
-                dataType:"json",
-                success:function(data) {
-                    if (data.code == 1) {
-                        var info = data.data;
-                        $(info).each(function (){
-                            var html = '<li>';
-                            html +=    '<a href="'+this.c_url+'">'+ this.c_name+'</a>';
-                            html +=    '</li>';
-                            $("#sc1,#sc2").append($(html))
-                        })
+    <script type="text/javascript" src="../js/yiController.js">
 
-                    }
-                }
-            })
-        })
     </script>
     
 </body>
