@@ -351,8 +351,7 @@
                         //loadRank();
                         var infos = data.data;
                         $(infos).each(function () {
-                            var html = '<li id="menu1"><a href="course.html" >'+this.typename+'</a></li>';
-                            acquireTypeId(this.typeid);
+                            var html = '<li id="menu1"><a href="javascript:findTypeId('+this.typeid+');" >'+this.typename+'</a></li>';
                             $("#courseTypeId").append($(html));
                             $("#titleid").append($(html));
                         })
@@ -362,8 +361,57 @@
         })
     </script>
 
+    <script type="text/javascript">
+        function findTypeId(typeid) {
+            $.ajax({
+                type:"get",
+                url:"../findCourseRank.do",
+                dataType:"json",
+                success:function (data) {
+                    if(data.code == 1) {
+                        $("#courseRankId").empty();
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html = '<li><a id="CourseTab2"  class="acur"  href="javascript:findCourseByTypeAndRank('+typeid+','+this.rankid+');" >'+this.rankname+'</a></li>';
+                            $("#courseRankId").append($(html));
+                        })
 
-    <!--发送ajax请求查询到课程的等级-->
+                    }
+                }
+            })
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        function findCourseByTypeAndRank (typeid, rankid) {
+            $.ajax({
+                type:"get",
+                url:"../findCourse.do",
+                data:{"ctypeid":typeid,"crankid":rankid,"page":1,"limit":3},
+                dataType:"json",
+                success:function (data) {
+                    if(data.code ==1){
+                        $("#courseInfo").empty();
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html =' <li> ';
+                            html += '   <div class="pic"><a href="course_info.html"><img src="'+ this.cimg +'" /></a></div>';
+                            html += ' <dl>';
+                            html += '  <dt class="name">'+ this.cname +'<span>￥'+ this.cprice +'</span></dt>';
+                            html += '  <dt>'+ this.cdesc +'</dt>';
+                            html += ' <dt><a href="course_info.html">[查看详情]</a></dt>';
+                            html += ' </dl>';
+                            html += '  </li>';
+
+                            $("#courseInfo").append($(html));
+                        })
+                    }
+                }
+            })
+        }
+    </script>
+<!--    &lt;!&ndash;发送ajax请求查询到课程的等级&ndash;&gt;
     <script type="text/javascript">
         $(function () {
             $.ajax({
@@ -382,10 +430,10 @@
                 }
             })
         })
-    </script>
+    </script>-->
 
 
-    <script type="text/javascript">
+    <!--<script type="text/javascript">
         var findCourseType=0;
         var courseRank =0;
         function acquireTypeId(typeid) {
@@ -418,6 +466,6 @@
             })
         }
 
-    </script>
+    </script>-->
 </body>
 </html>
