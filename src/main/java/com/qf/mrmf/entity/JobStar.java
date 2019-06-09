@@ -44,7 +44,7 @@ public class JobStar {
         this.js_detail = js_detail;
     }
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     public Date getJs_time() {
         return js_time;
     }
