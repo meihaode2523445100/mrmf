@@ -159,7 +159,7 @@
                <div class="MainContent">
                       
                       <!--Cont Star-->
-					  <script src="../js/prototype.js" type="text/javascript"></script>
+					  <!--<script src="../js/prototype.js" type="text/javascript"></script>-->
                       <script src="../js/scriptaculous.js?load=effects" type="text/javascript"></script>
                       <script src="../js/lightbox.js" type="text/javascript"></script>
                       <ul class="Product_list">
@@ -310,18 +310,19 @@
 	  jQuery("#menu1").attr("class","acur");
     </script>
 
+
     <script type="text/javascript">
         $(function () {
             $.ajax({
                 type:"get",
                 url:"../productionType/all.do",
                 dataType:"json",
-                success:function(data) {
+                success:function (data) {
                     if (data.code == 1) {
                         var info = data.data;
                         $(info).each(function (){
                             var html = '<li>';
-                            html +=    '<a href="'+this.+pr_type_url'">'+ this.pr_type+'</a>';
+                            html +=    '<a href="'+this.pr_type_url+'">'+ this.pr_type+'</a>';
                             html +=    '</li>';
                             $("#productType").append($(html))
                         })
@@ -329,10 +330,6 @@
                 }
             })
         })
-    </script>
-
-    <script type="text/javascript">
-
     </script>
 
 </body>

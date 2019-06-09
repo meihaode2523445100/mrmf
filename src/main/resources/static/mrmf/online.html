@@ -157,18 +157,18 @@
                       <table width="0%" border="0" cellspacing="0" cellpadding="0" class="My_table">
                         <tr>
                           <td class="name">姓名</td>
-                          <td><input name="sname" type="text" class="text" /></td>
+                          <td><input name="sname" type="text" class="text" id="inputname"/></td>
                         </tr>
                         <tr>
                           <td class="name">手机号</td>
-                          <td><input name="stel" type="text" class="text" /></td>
+                          <td><input name="stel" type="text" class="text" id="inputtel"/></td>
                         </tr>
                         <tr>
                           <td class="name">QQ</td>
-                          <td><input name="sqq" type="text" class="text" /></td>
+                          <td><input name="sqq" type="text" class="text" id="inputqq" /></td>
                         </tr>
                         <tr>
-                          <td valign="top" class="name">报读课程<em>(可多选)</em></td>
+                          <td valign="top" class="name" >报读课程<em>(可多选)</em></td>
                           <td>
                                <ul id="courseId">
                                     <!--<li><input name="cid" type="radio" value="" />首脑经典裁剪</li>
@@ -200,8 +200,8 @@
                           </td>
                         </tr>
                         <tr>
-                          <td valign="top" class="name">备注</td>
-                          <td><textarea name="" class="text02"></textarea></td>
+                          <td valign="top" class="name" >备注</td>
+                          <td><textarea name="" class="text02" name="msg" id="msg"></textarea></td>
                         </tr>
                         <tr>
                           <td valign="top" class="name">&nbsp;</td>
@@ -305,7 +305,7 @@
                 dataType:"json",
                 success:function(data){
                     if(data.code == 1) {
-                        alert("报名成功")
+                        alert("报名成功");
                     } else {
                         alert("失败");
                     }
