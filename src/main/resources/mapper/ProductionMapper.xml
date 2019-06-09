@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.mrmf.dao.ProductionDao">
     <select id="queryAll" resultType="com.qf.mrmf.entity.ProductionType">
-        select pr_type_id, pr_type from w_type_production
+        select * from w_type_production
     </select>
 
     <select id="selectById" resultType="com.qf.mrmf.entity.Production">

@@ -12,4 +12,5 @@ import lombok.Data;
 public class ProductionType {
     private Integer pr_type_id;
     private String pr_type;
+    private String pr_type_url;
 }
