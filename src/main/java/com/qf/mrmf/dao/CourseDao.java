@@ -17,4 +17,6 @@ public interface CourseDao {
     List<CourseRank> findAllRank();
 
     List<Course> findCourserBySomeCondition(int ctypeid,int crankid,int page,int size);
+
+    List<Course> findAllCourse();
 }

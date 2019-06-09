@@ -34,4 +34,11 @@ public class CourserController {
     public R findCourse(int ctypeid,int crankid,int page,int limit){
         return courseService.findCourserBySomeCondition(ctypeid,crankid,page,limit);
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "findAllCourse.do",method = RequestMethod.GET)
+    @ApiOperation(value = "查找所有的课程" ,notes="无参")
+    public R findAllCourse(){
+        return courseService.findAll();
+    }
 }

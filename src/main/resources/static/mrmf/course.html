@@ -165,8 +165,8 @@
                       
                       <!--初级美容师班-->
                       <div class="Course_list" id="con_CourseTab_1">
-                           <ul>
-                                  <li>
+                           <ul id="courseInfo">
+                                 <!-- <li>
                                        <div class="pic"><a href="course_info.html"><img src="../images/Pic26.jpg" /></a></div>
                                        <dl>
                                        <dt class="name">美容全科<span>￥1080</span></dt>
@@ -197,7 +197,7 @@
                                        <dt>适用于美容初学者，想全面提升自我能力，课程综合性强，包含美容、化妆、美甲、形象设计等多方面知识，适合在中、高端美容院担任...</dt>
                                        <dt><a href="course_info.html">[查看详情]</a></dt>
                                        </dl>
-                                  </li>
+                                  </li>-->
                          </ul>
                       </div>
                       <!--初级美容师班 End-->
@@ -348,18 +348,20 @@
                 dataType:"json",
                 success:function (data) {
                     if(data.code == 1) {
+                        //loadRank();
                         var infos = data.data;
                         $(infos).each(function () {
-                            var html = '<li id="menu1"><a href="course.html">'+this.typename+'</a></li>';
+                            var html = '<li id="menu1"><a href="course.html" >'+this.typename+'</a></li>';
+                            acquireTypeId(this.typeid);
                             $("#courseTypeId").append($(html));
                             $("#titleid").append($(html));
                         })
-
                     }
                 }
             })
         })
     </script>
+
 
     <!--发送ajax请求查询到课程的等级-->
     <script type="text/javascript">
@@ -372,7 +374,7 @@
                     if(data.code == 1) {
                         var infos = data.data;
                         $(infos).each(function () {
-                            var html = '<li><a href="javascript:void(0);" id="CourseTab2" >'+this.rankname+'</a></li>';
+                            var html = '<li><a id="CourseTab2"  class="acur" onclick="find('+this.rankid+')">'+this.rankname+'</a></li>';
                             $("#courseRankId").append($(html));
                         })
 
@@ -381,6 +383,41 @@
             })
         })
     </script>
-    
+
+
+    <script type="text/javascript">
+        var findCourseType=0;
+        var courseRank =0;
+        function acquireTypeId(typeid) {
+            findCourseType = typeid;
+        }
+
+        function find(rankid) {
+            $.ajax({
+                type:"get",
+                url:"../findCourse.do",
+                data:{"ctypeid":findCourseType,"crankid":rankid,"page":1,"limit":2},
+                dataType:"json",
+                success:function (data) {
+                    if(data.code ==1){
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html =' <li> ';
+                            html += '   <div class="pic"><a href="course_info.html"><img src="'+ this.cimg +'" /></a></div>';
+                            html += ' <dl>';
+                            html += '  <dt class="name">'+ this.cname +'<span>￥'+ this.cprice +'</span></dt>';
+                            html += '  <dt>'+ this.cdesc +'</dt>';
+                            html += ' <dt><a href="course_info.html">[查看详情]</a></dt>';
+                            html += ' </dl>';
+                            html += '  </li>';
+
+                            $("#courseInfo").append($(html));
+                        })
+                    }
+                }
+            })
+        }
+
+    </script>
 </body>
 </html>

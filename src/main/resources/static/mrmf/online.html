@@ -6,10 +6,10 @@
 <meta name="Author" content="">
 
 <title>我的虚拟世界店铺</title>
-<link href="css/css_whir.css" rel="stylesheet" type="text/css" />
-<script src="script/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link href="../css/css_whir.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <!--[if IE 6]>
-<script src="script/pngAlaph.js"></script>
+    <script src="../js/pngAlaph.js"></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
 
@@ -135,7 +135,7 @@
            <!--Sidebar-->
            <div class="Sidebar">
            <div class="menu">
-   <h3><img src="images/Nav_contact.png" /></h3>
+   <h3><img src="../images/Nav_contact.png" /></h3>
    <ul>
          <li id="menu1"><a href="contact.html">联系我们</a></li>
          <li id="menu2"><a href="online.html">在线报名</a></li>
@@ -152,25 +152,26 @@
                <dl><a href="#">首页</a> > <a href="#">联系我们</a> > <span>在线报名</span></dl>
                </div>
                <div class="MainContent">
-                      
+                   <form action="studentApply.do" method="post" onsubmit="return false">
                       <!--Cont Star-->
                       <table width="0%" border="0" cellspacing="0" cellpadding="0" class="My_table">
                         <tr>
                           <td class="name">姓名</td>
-                          <td><input name="" type="text" class="text" /></td>
+                          <td><input name="sname" type="text" class="text" /></td>
                         </tr>
                         <tr>
                           <td class="name">手机号</td>
-                          <td><input name="" type="text" class="text" /></td>
+                          <td><input name="stel" type="text" class="text" /></td>
                         </tr>
                         <tr>
                           <td class="name">QQ</td>
-                          <td><input name="" type="text" class="text" /></td>
+                          <td><input name="sqq" type="text" class="text" /></td>
                         </tr>
                         <tr>
                           <td valign="top" class="name">报读课程<em>(可多选)</em></td>
                           <td>
-                               <ul>
+                               <ul id="courseId">
+                                    <!--<li><input name="cid" type="radio" value="" />首脑经典裁剪</li>
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
@@ -181,8 +182,7 @@
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
                                     <li><input name="" type="radio" value="" />首脑经典裁剪</li>
-                                    <li><input name="" type="radio" value="" />首脑经典裁剪</li>
-                                    <li><input name="" type="radio" value="" />首脑经典裁剪</li>
+                                    <li><input name="" type="radio" value="" />首脑经典裁剪</li>-->
                                </ul>
                                
                           </td>
@@ -190,12 +190,12 @@
                         <tr>
                           <td class="name">选择校区</td>
                           <td>
-                              <select>
+                              <select id="selectSchool">
                                   <option>---请选择报读校区---</option>
+                                  <!--<option>首脑经典裁剪</option>
                                   <option>首脑经典裁剪</option>
                                   <option>首脑经典裁剪</option>
-                                  <option>首脑经典裁剪</option>
-                                  <option>首脑经典裁剪</option>
+                                  <option>首脑经典裁剪</option>-->
                               </select>
                           </td>
                         </tr>
@@ -205,10 +205,11 @@
                         </tr>
                         <tr>
                           <td valign="top" class="name">&nbsp;</td>
-                          <td><input name="" type="button" class="btn" value="在线报名"/></td>
+                          <td><input  type="submit" class="btn" value="在线报名"/></td>
                         </tr>
                       </table>
                       <!--Cont End-->
+                   </form>
                       
                <div class="space20"></div>       
                </div>
@@ -248,11 +249,69 @@
     </div>
     <!--bottom End-->
     
-    <script type="text/javascript" src="script/Tabs.js"></script>
+    <script type="text/javascript" src="../js/Tabs.js"></script>
     <script type="text/javascript" language="javascript">
       jQuery("#nav9").attr("class","onnav");
 	  jQuery("#menu2").attr("class","acur");
     </script>
-    
+<!--查询课程-->
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type:"get",
+                url:"../findAllCourse.do",
+                dataType:"json",
+                success:function (data) {
+                    if(data.code == 1) {
+                        var infos = data.data;
+                        $(infos).each(function () {
+                            var html = '<li><input name="cid" type="radio" value="' + this.cid + '" />' + this.cname + '</li>';
+                            $("#courseId").append($(html));
+                        })
+
+                    }
+                }
+            })
+        })
+    </script>
+
+<!--查询校区-->
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            type:"get",
+            url:"../findAllCampus.do",
+            dataType:"json",
+            success:function (data) {
+                if(data.code == 1) {
+                    var infos = data.data;
+                    $(infos).each(function () {
+                        var html = '<option name="schoolid" value="'+this.schoolid+'">'+this.schoolname+'</option>';
+                        $("#selectSchool").append($(html))
+                    })
+                }
+            }
+        })
+    })
+</script>
+
+<!--信息的添加-->
+    <script type="text/javascript">
+        $("form").submit(function(){
+            $.ajax({
+                type:"post",
+                url:"../studentApply.do",
+                data:$("form").serialize(),
+                dataType:"json",
+                success:function(data){
+                    if(data.code == 1) {
+                        alert("报名成功")
+                    } else {
+                        alert("失败");
+                    }
+                }
+            })
+        })
+    </script>
 </body>
 </html>

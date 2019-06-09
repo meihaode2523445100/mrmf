@@ -9,4 +9,6 @@ public interface CourseService {
     R findAllCourseRank();
 
     R findCourserBySomeCondition(int ctypeid,int crankid,int page,int limit);
+
+    R findAll();
 }
