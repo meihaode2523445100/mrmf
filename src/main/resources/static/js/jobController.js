@@ -11,7 +11,7 @@ $(function () {
                     html +=    '<a href="javascript:loadJobService('+this.c_id+');">'+this.c_name+'</a>';
                     html +=    '</li>';
                     $("#js1,#js2").append($(html));
-                    loadCStar();
+                    loadCStar(1);
                 })
 
             }
