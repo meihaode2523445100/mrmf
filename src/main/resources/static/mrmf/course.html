@@ -9,8 +9,9 @@
 
     <link href="../css/css_whir.css" rel="stylesheet" type="text/css" />
   <!--  <link href="../js/datepicker/skin/WdatePicker.css" type="text/css"/>-->
-    <link href="../css/pagination.css" type="text/css"/>
-    <script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <!--<link href="../css/pagination.css" type="text/css"/>-->
+    <link href="../js/pagination/pagination.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="../js/javascript.js"></script>
     <script type="text/javascript" src="../js/jquery.pagination.js"> </script>
     <!--<script type="text/javascript" src="../js/simpla.jquery.configuration.js"></script>-->
@@ -383,7 +384,7 @@
                         $("#courseRankId").empty();
                         var infos = data.data;
                         $(infos).each(function () {
-                            var html = '<li><a id="CourseTab2"  class="acur"  href="javascript:findCourseByTypeAndRank('+typeid+','+this.rankid+');" >'+this.rankname+'</a></li>';
+                            var html = '<li><a id="CourseTab2"  class="acur"  href="javascript:findCourseByTypeAndRank('+typeid+','+this.rankid+',1);" >'+this.rankname+'</a></li>';
                             $("#courseRankId").append($(html));
                         })
 
@@ -395,11 +396,12 @@
 
 
     <script type="text/javascript">
-        function findCourseByTypeAndRank (typeid, rankid) {
+
+        function findCourseByTypeAndRank (typeid, rankid,page) {
             $.ajax({
                 type:"get",
                 url:"../findCourse.do",
-                data:{"ctypeid":typeid,"crankid":rankid,"page":1},
+                data:{"ctypeid":typeid,"crankid":rankid,"page":page},
                 dataType:"json",
                 success:function (data) {
                     if(data.code ==1){
@@ -434,7 +436,7 @@
                             callback:function(index){
                                 //index.getCurrent()获取当前需要使用的页码
                                 $('.now').text(index.getCurrent());
-                                loadData(index.getCurrent());//获取当前页
+                                findCourseByTypeAndRank (typeid, rankid,index.getCurrent());//获取当前页
                             }
                         });
                     }
