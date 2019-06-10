@@ -30,13 +30,15 @@ public class ProductionServiceImpl implements ProductionService {
     }
 
     @Override
-    public Map<String, Object> findByPageOrId(int pr_type_id, int page) {
+    public R findByPageOrId(int pr_type_id, int page) {
         PageHelper.startPage(page, 3);
         List<Production> list = productionTypeDao.selectById(pr_type_id);
 
         Map<String, Object> map = new HashMap<>();
+        // 获取总记录数
         map.put("total",((Page)list).getTotal());
+        // 当前页显示的记录
         map.put("rows", list);
-        return map;
+        return R.setOK("分页查询",map);
     }
 }

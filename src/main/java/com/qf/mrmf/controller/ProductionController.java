@@ -5,9 +5,9 @@ import com.qf.mrmf.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @program: mrmf
@@ -36,8 +36,7 @@ public class ProductionController {
     @ApiOperation(value = "根据id查看所属内容", notes = "根据id查看所属内容")
     @GetMapping("production/search.do")
     public R selectByPageOrId(int pr_type_id, int page){
-        Map<String, Object> map = productionService.findByPageOrId(pr_type_id, page);
-        return R.setOK("OK", map);
+        return productionService.findByPageOrId(pr_type_id, page);
     }
 
 }

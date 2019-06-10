@@ -13,5 +13,6 @@ public class Teacher {
     private Integer te_id;
     private String te_name;
     private String te_imgpath;
+    private String te_detail;
 
 }

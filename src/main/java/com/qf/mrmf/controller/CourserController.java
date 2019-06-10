@@ -30,8 +30,16 @@ public class CourserController {
 
     @CrossOrigin
     @RequestMapping(value = "findCourse.do",method = RequestMethod.GET)
-    @ApiOperation(value = "查找相关的课程" ,notes="ctypeid:课程的种类id；crankid：课程等级的id; page:查询的页数;limit:查询的条数")
-    public R findCourse(int ctypeid,int crankid,int page,int limit){
-        return courseService.findCourserBySomeCondition(ctypeid,crankid,page,limit);
+    @ApiOperation(value = "查找相关的课程" ,notes="ctypeid:课程的种类id；crankid：课程等级的id; page:查询的页数")
+    public R findCourse(int ctypeid,int crankid,int page){
+        return courseService.findCourserBySomeCondition(ctypeid,crankid,page);
     }
+
+    @CrossOrigin
+    @RequestMapping(value = "findAllCourse.do",method = RequestMethod.GET)
+    @ApiOperation(value = "查找所有的课程" ,notes="无参")
+    public R findAllCourse(){
+        return courseService.findAll();
+    }
+
 }

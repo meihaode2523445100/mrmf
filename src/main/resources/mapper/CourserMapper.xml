@@ -12,6 +12,9 @@
     <select id="findCourserBySomeCondition" parameterType="map" resultType="com.qf.mrmf.entity.Course">
         select * from tb_course_info
         where ctypeid = #{ctypeid} and crankid = #{crankid}
-        limit #{page},#{size};
+    </select>
+
+    <select id="findAllCourse" resultType="com.qf.mrmf.entity.Course">
+        select * from tb_course_info
     </select>
 </mapper>
