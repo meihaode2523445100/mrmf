@@ -31,7 +31,7 @@ public class ProductionServiceImpl implements ProductionService {
 
     @Override
     public R findByPageOrId(int pr_type_id, int page) {
-        PageHelper.startPage(page, 3);
+        PageHelper.startPage(page, 4);
         List<Production> list = productionTypeDao.selectById(pr_type_id);
 
         Map<String, Object> map = new HashMap<>();
