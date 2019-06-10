@@ -23,8 +23,8 @@ public class JobController {
     }
     @RequestMapping(value = "CStar", method = RequestMethod.GET)
     @ApiOperation(value = "查到创业之星", notes = "查询")
-    public R findJobCStar() {
-        return jobService.findJobCStar();
+    public R findJobCStar(int page) {
+        return jobService.findJobCStar(page);
     }
     @RequestMapping(value = "JStar", method = RequestMethod.GET)
     @ApiOperation(value = "查到就业之星", notes = "查询")

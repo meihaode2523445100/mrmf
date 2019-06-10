@@ -4,7 +4,10 @@ import com.qf.mrmf.vo.R;
 
 public interface JobService {
     R findJobMenu();
-    R findJobCStar();
+
+    R findJobCStar(int page);
+
     R findJobJStar();
     R findJobJServer();
+
 }
