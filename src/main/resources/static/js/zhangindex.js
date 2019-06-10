@@ -43,3 +43,45 @@ $(function () {
        }
    })
 })
+
+$(function () {
+    $.ajax({
+        type:"get",
+        url:"../productionType/all.do",
+        dataType:"json",
+        success:function (data) {
+            if(data.code == 1){
+                $("#prodectMenuId").empty();
+                var infos = data.data;
+                $(infos).each(function () {
+                 var html = '<li><a href="javascript:findProtuct('+this.pr_type_id+');" id="Protab'+this.pr_type_id+'" onmouseover="setTab(\'Protab\','+this.pr_type_id+',6)">'+this.pr_type+'</a></li>';
+                 $("#prodectMenuId").append($(html));
+                })
+            }
+        }
+    })
+})
+
+function findProtuct(typeid) {
+    $.ajax({
+        type:"get",
+        url:"../production/search.do",
+        data:{"pr_type_id":typeid,"page":1},
+        dataType:"json",
+        success:function () {
+            if(data,code == 1) {
+                $("#con_Protab_1").empty();
+                var infos = data.data.rows;
+                $(infos).each(function () {
+                     var html = '<li>';
+                    html += '<div class="pic"><a href="product.html"><img src="'+this.dp_imgpath+'"/></a></div>';
+                    html += '<h5><a href="product.html">'+this.dp_title+'</a></h5>';
+                    html += ' </li>';
+
+                    $("#list1").append($(html));
+                })
+            }
+        }
+    })
+}
+
