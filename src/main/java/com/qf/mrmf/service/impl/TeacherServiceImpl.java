@@ -26,7 +26,7 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Map<String, Object> queryAll(int page) {
-        PageHelper.startPage(page, 5);
+        PageHelper.startPage(page, 6);
         List<Teacher> list = teacherDao.queryAll();
 
         Map<String, Object> map = new HashMap<>();
